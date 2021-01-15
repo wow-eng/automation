@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.StandingbookDao">
+
+    <resultMap type="com.entity.Standingbook" id="StandingbookMap">
+        <result property="terminalId" column="TERMINAL_ID" jdbcType="VARCHAR"/>
+        <result property="terminalName" column="TERMINAL_NAME" jdbcType="VARCHAR"/>
+        <result property="chanName" column="CHAN_NAME" jdbcType="VARCHAR"/>
+        <result property="equipType" column="EQUIP_TYPE" jdbcType="VARCHAR"/>
+        <result property="chanType" column="CHAN_TYPE" jdbcType="VARCHAR"/>
+        <result property="factoryName" column="FACTORY_NAME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="StandingbookMap">
+       select a.terminal_id,a.terminal_name,b.chan_name,a.equip_type,b.chan_type,a.factory_name from dwt_dms.das_terminal as a,accounting.das_channel_info as b
+        <where>
+
+            <if test="terminalId != null and terminalId != ''">
+            and terminal_id = #{terminalId}
+            </if>
+            <if test="terminalName != null and terminalName != ''">
+                and terminal_name = #{terminalName}
+            </if>
+            <if test="chanName != null and chanName != ''">
+                and chan_name = #{chanName}
+            </if>
+            <if test="equipType != null and equipType != ''">
+                and equip_type = #{equipType}
+            </if>
+            <if test="chanType != null and chanType != ''">
+                and chan_type = #{chanType}
+            </if>
+            <if test="factoryName != null and factoryName != ''">
+                and factory_name = #{factoryName}
+            </if>
+            a.terminal_id=b.terminal_id
+        </where>
+
+    </select>
+    <select id="queryAllNum" resultType="java.lang.Integer">
+    select count(*) from dwt_dms.das_terminal as a,dwt_dms.das_channel_info as b
+        <where>
+
+            <if test="terminalId != null and terminalId != ''">
+                and terminal_id = #{terminalId}
+            </if>
+            <if test="terminalName != null and terminalName != ''">
+                and terminal_name = #{terminalName}
+            </if>
+            <if test="chanName != null and chanName != ''">
+                and chan_name = #{chanName}
+            </if>
+            <if test="equipType != null and equipType != ''">
+                and equip_type = #{equipType}
+            </if>
+            <if test="chanType != null and chanType != ''">
+                and chan_type = #{chanType}
+            </if>
+            <if test="factoryName != null and factoryName != ''">
+                and factory_name = #{factoryName}
+            </if>
+            a.terminal_id=b.terminal_id
+        </where>
+
+    </select>
+    </mapper>

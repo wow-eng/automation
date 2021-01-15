@@ -1,0 +1,62 @@
+body{
+    background-image: url("images/bg_login.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+.row:first-child{
+    height: 73px;
+    background-image: url("images/bg_head_login.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.box{
+    margin: auto;
+    background-color: rgba(1, 32, 124, 0.8);
+    width: 450px;
+    height: 400px;
+    border-radius:10px;
+    margin-top: 7%;
+}
+.boxHeader{
+    line-height: 50px;
+    font-weight: bold;
+    background-color: rgba(12, 17, 79, 0.7);
+    color:#ffffff;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+}
+.boxBody{
+    text-align: left;
+    padding:40px;
+    padding-left: 65px;
+}
+.boxBody div{
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.boxBody div input{
+    height: 35px;
+    border-radius: 5px;
+    border:1px solid #cccccc;
+    float: left;
+    padding-left:10px;
+    color: #666666;
+}
+.boxBody div img{
+    float: left;
+    border:1px solid #cccccc;
+    height: 35px;
+    margin-left: 10px;
+}
+.boxBody div .button{
+    width: 310px;
+    height: 45px;
+    border-radius: 5px;
+    border:1px solid #ffffff;
+    background-color: #009688;
+    cursor: pointer;
+    color:#ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}

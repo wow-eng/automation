@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+</head>
+<body>
+<div class="demoTable">
+    搜索终端名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalName" id="terminalName" autocomplete="off">
+    </div>
+    搜索终端类型：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="terminalType" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="layui/js/jquery-3.4.1.js" charset="utf-8"></script>
+<script type="text/html" id="toolbarDemo">
+
+</script>
+<script>
+    layui.use(['table'], function(){
+        var table = layui.table;
+        table.render({
+            elem: '#test'
+            ,url:'dasTerminal/queryAll'
+            ,width:'200%'
+            ,totaRow:true
+            ,cols: [[
+                {field:'terminalId', width:80, title: '终端ID', width:80, fixed: 'left', unresize: true, sort: true}
+                ,{field:'terminalType', width:90, title: '终端类型',sort: true}
+                ,{field:'terminalName', width:80, title: '终端名称'}
+                ,{field:'commFacId', width:80, title: '通讯场所站id'}
+                ,{field:'equipId', width:80, title: '所属设备id'}
+                ,{field:'equipType', title: '设备类型', width: 90, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'orgId', title: '地市公司', width: 90}
+                ,{field:'runDate', title: '终端投运时间', width:200}
+                ,{field:'updateDate', title: '数据更新时间', width: 150}
+                ,{field:'fileDate', width:80, title: '无'}
+                ,{field:'feederId', width:137, title: '馈线线路id'}
+                ,{field:'functionType', width:137, title: '设备类型'}
+                ,{field:'objId', width:137, title: 'pms2.0编号'}
+                ,{field:'pmsId', width:137, title: 'PMS_id'}
+                ,{field:'delflag', width:137, title: '状态'}
+                ,{field:'deldate', width:137, title: '删除时间'}
+                ,{field:'ssfzx', width:137, title: '删除时间'}
+                ,{field:'runStatus', width:137, title: '投运状态'}
+                ,{field:'countryId', width:137, title: '县级单位'}
+                ,{field:'isOnline', width:137, title: '是否在线'}
+                ,{field:'factoryName', width:137, title: '终端厂商'}
+                ,{field:'terminalStatus', width:137, title: '终端运行状态'}
+            ]],
+            id: 'testReload'
+            ,page: {
+                limit:25
+            }
+        });
+        var $ = layui.$, active = {
+            reload: function () {
+                var terminalName = $('#terminalName');
+                var terminalType = $('#terminalType');
+                table.reload('testReload', {
+                    where: {
+                        terminalName: terminalName.val(),
+                        terminalType: terminalType.val()
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+</script>
+</body>
+</html>

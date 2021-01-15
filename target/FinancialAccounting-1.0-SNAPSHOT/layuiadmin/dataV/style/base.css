@@ -1,0 +1,72 @@
+html,
+body {
+	padding: 0rem;
+	margin: 0rem;
+	height: 100%;
+}
+
+div,
+h1,
+h2,
+h3,i{
+	padding: 0rem;
+	margin: 0rem;
+}
+
+h3{
+	font-weight: normal;
+	display: block;
+}
+
+dl,
+dt,
+dd {
+	padding: 0rem;
+	margin: 0rem;
+}
+span {
+	height: 100%;
+}
+ul,ul li{
+    list-style-type:none;
+	padding:0rem;
+	margin: 0rem;
+}
+table {
+	width: 100%;
+	text-align: center;
+	font-size: 0.875rem;
+}
+
+.row {
+	overflow: hidden;
+}.col-2-left {
+	float: left;
+	height: 100%;
+}
+
+.col-2-right {
+	float: right;
+	height: 100%;
+}
+
+.col-2-right span label {
+	display: block;
+	height: 100%;
+}
+
+.col-3-left,
+.col-3-center,
+.col-3-right{
+	float: left;
+	height: 100%;
+	padding-top: 1%;
+}
+
+.col-3-right {
+	float: right;
+}
+
+.box{}
+.boxHeader{}
+.boxBody{}
