@@ -1,0 +1,86 @@
+body {
+	background-image: url(images/bg_body.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.th1{
+	color: #03d7bc;
+	background-color: #051857;
+}
+#row1 {
+	height: 7%;
+	background-image: url(images/bg_head.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#row1 .col-2-right {
+	width: 30%;
+}
+
+#row1 .menu {
+	text-align: center;
+	background-image: url(images/bg_menu.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 30%;
+	height: 70%;
+	margin-top: 2%;
+	margin-left: 10%;
+	cursor: pointer;
+}
+
+#row1 .menu label {
+	font-size: 1rem;
+	color: #ffffff;
+	padding-top: 6%;
+	display: block;
+	font-weight: bold;
+	cursor: pointer;
+}
+#row1 .menu label:hover{
+	color: #03D7BC;
+}
+
+#row1 .user {
+	width: 38%;
+	margin-top: 3%;
+}
+
+#row1 .user span {
+	background-image: url(images/ico_user.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 20%;
+	height: 60%;
+	margin-right: 2%;
+}
+
+#row1 .user dt {
+	color: #ffffff;
+	font-size: 0.9rem;
+}
+
+#row1 .user dd {
+	color: #bcbcf8;
+	font-size: 0.7rem;
+}
+
+#row1 .fullScreen {
+	background-image: url(images/ico_fullScreen.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 4%;
+	height: 35%;
+	margin-top: 4.5%;
+	margin-right: 7%;
+}
+
+#row1 .exit {
+	background-image: url(images/ico_exit.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 4%;
+	height: 35%;
+	margin-top: 4.5%;
+}

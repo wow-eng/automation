@@ -1,5 +1,16 @@
 G:\java\web\Automation\src\main\java\com\controller\DasCMpController.java
+G:\java\web\Automation\src\main\java\com\util\Result.java
+G:\java\web\Automation\src\main\java\com\dao\DasTerminalDao.java
 G:\java\web\Automation\src\main\java\com\service\impl\DasCMpServiceImpl.java
 G:\java\web\Automation\src\main\java\com\service\DasCMpService.java
-G:\java\web\Automation\src\main\java\com\dao\DasCMpDao.java
+G:\java\web\Automation\src\main\java\com\controller\StandingbookController.java
 G:\java\web\Automation\src\main\java\com\entity\DasCMp.java
+G:\java\web\Automation\src\main\java\com\service\impl\StandingbookServiceImpl.java
+G:\java\web\Automation\src\main\java\com\dao\StandingbookDao.java
+G:\java\web\Automation\src\main\java\com\service\impl\DasTerminalServiceImpl.java
+G:\java\web\Automation\src\main\java\com\service\DasTerminalService.java
+G:\java\web\Automation\src\main\java\com\controller\DasTerminalController.java
+G:\java\web\Automation\src\main\java\com\entity\DasTerminal.java
+G:\java\web\Automation\src\main\java\com\dao\DasCMpDao.java
+G:\java\web\Automation\src\main\java\com\entity\Standingbook.java
+G:\java\web\Automation\src\main\java\com\service\StandingbookService.java

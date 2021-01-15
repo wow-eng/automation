@@ -13,7 +13,7 @@
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="DasCMpMap">
-        select mp_id,mp_no,mp_name,switch_no from dwt_dws.das_c_cmp
+        select mp_id,mp_no,mp_name,switch_no from das_c_mp
         <where>
             <if test="mpId != null">
                 and mp_id = #{mpId}

@@ -1,5 +1,16 @@
+com\controller\DasTerminalController.class
+com\service\impl\DasTerminalServiceImpl.class
+com\dao\DasTerminalDao.class
 com\service\DasCMpService.class
-com\controller\DasCMpController.class
+com\service\StandingbookService.class
+com\dao\StandingbookDao.class
+com\entity\DasTerminal.class
+com\service\DasTerminalService.class
+com\entity\Standingbook.class
 com\dao\DasCMpDao.class
 com\entity\DasCMp.class
 com\service\impl\DasCMpServiceImpl.class
+com\util\Result.class
+com\controller\StandingbookController.class
+com\controller\DasCMpController.class
+com\service\impl\StandingbookServiceImpl.class

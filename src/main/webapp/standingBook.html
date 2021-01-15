@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+</head>
+<body>
+<div class="demoTable">
+    搜索终端名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalName" id="terminalName" autocomplete="off">
+    </div>
+   设备类型：
+    <div class="layui-inline">
+        <input class="layui-input" name="equipType" id="equipType" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="layui/js/jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            Width: 1200
+            ,elem: '#test'
+            ,url:'standingbook/queryAll'
+            ,cols: [[
+                {field:'terminalId', width:200, title: '终端ID', width:200, fixed: 'left', unresize: true, sort: true}
+                ,{field:'terminalName', width:200, minWidth: 200,title: '终端名称',sort: true}
+                ,{field:'chanName', width:200, title: '前置通道'}
+                ,{field:'equipType', width:200, title: '设备类型'}
+                ,{field:'chanType', width:200, title: '通讯介子'}
+                ,{field:'factoryName', title: '终端厂家', width: 200, minWidth: 200} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            ]],
+            id: 'testReload'
+            ,page: {
+                limit:20
+            }
+        });
+        var $ = layui.$, active = {
+            reload: function () {
+                var terminalName = $('#terminalName');
+                var equipType = $('#equipType');
+
+                table.reload('testReload', {
+                    where: {
+                        terminalName: terminalName.val(),
+                        equipType: equipType.val()
+                    }
+                });
+            }
+        };
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+
+</body>
+</html>
