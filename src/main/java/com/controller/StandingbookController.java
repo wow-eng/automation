@@ -1,9 +1,8 @@
 package com.controller;
 
-import com.entity.DasTerminal;
 import com.entity.Standingbook;
 import com.service.StandingbookService;
-import com.util.Result;
+import com.util.LayResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -41,7 +40,7 @@ public class StandingbookController {
     public Object queryAll(Standingbook standingbook,@RequestParam(defaultValue = "1") Integer page, Integer limit){
         int num = this.standingbookService.queryAllNum(standingbook);
         List<Standingbook> list = this.standingbookService.queryAll(standingbook,page,limit);
-        return Result.getStringObjectMap(num,list);
+        return LayResult.getStringObjectMap(num,list);
     }
 
 }

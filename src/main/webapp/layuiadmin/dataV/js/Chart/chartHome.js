@@ -3,7 +3,7 @@ function pwzdsltj(paramvalues){
    // 柱状图表，列多柱
 var chartColumnar_column = {
     color:[
-        "#87cefa", "#e73f60","#f2b71d"
+        "#87cefa", "#e73f60","#e75f60","#CAF2C2","#f3b81d","#97E76F", "#C9C8E7","#AB4BE7"
     ],
     legend: {
         top: 10,
@@ -22,7 +22,7 @@ var chartColumnar_column = {
     },
     tooltip: {},
     dataset: {
-        dimensions: ['product', 'DTU', 'FTU', '故障指示器'],
+        dimensions: ['product', 'DTU', 'FTU','TTU','RTU', '分布式电源终端','故障指示器','电缆型故障指示器','未知故障指示器'],
         source:paramvalues
     },
     textStyle: {
@@ -53,15 +53,35 @@ var chartColumnar_column = {
     series: [
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
         },
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
         },
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
         }
     ]
 };

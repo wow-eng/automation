@@ -1,24 +1,52 @@
 package com.util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Result {
-    public Map<String, Object> setNumList(Integer num, Object list) {
-        return getStringObjectMap(num, list);
+
+    private String code;
+
+    private Object data;
+
+    private String msg;
+
+    public String getCode() {
+        return code;
     }
 
-    public static Map<String, Object> getStringObjectMap(Integer num, Object list) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-        resultMap.put("code", 0);
+    public Object getData() {
+        return data;
+    }
 
-        resultMap.put("msg", "");
+    public void setData(Object data) {
+        this.data = data;
+    }
 
-        resultMap.put("count", num);
+    public String getMsg() {
+        return msg;
+    }
 
-        resultMap.put("data", list);
-        return resultMap;
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public static Result success(){
+        Result result = new Result();
+        result.setCode("200");
+        return result;
+    }
+    public static Result success(Object data){
+        Result result = new Result();
+        result.setCode("200");
+        result.setData(data);
+        return result;
+    }
+    public static Result fail(String msg){
+        Result result = new Result();
+        result.setCode("500");
+        result.setMsg(msg);
+        return result;
     }
 }
-

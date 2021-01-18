@@ -178,7 +178,7 @@
 	        });
          // 配网终端数量统计
          $.ajax({
-			url:'${pageContext.request.contextPath}/theme/pwzdsltj.do',			
+			url:'dasTerminal/countStatistics',
 			method:'get',
 			cache: false,
 			dataType: 'json',
@@ -187,14 +187,19 @@
 			     var paramvalues=[];
 			     $.each(objects,function(i,obj){
 			          var object = new Object();
-			           if(obj.product.length>4){
-				           object.product = obj.product.substring(0,4);
-				       }else{
-				           object.product= obj.product;
-				       }      
-			          object.DTU=obj.dtu;
-			          object.FTU =obj.ftu;
-			          object.故障指示器=obj.zsq;
+			           // if(obj.product.length>4){
+				       //     object.product = obj.product.substring(0,4);
+				       // }else{
+				       //     object.product= obj.product;
+				       // }
+			          object.DTU=objects.dtu;
+			          object.FTU =objects.ftu;
+			          object.故障指示器=objects.gz;
+			          object.RTU=objects.rtu;
+			          object.TTU=objects.ttu;
+			          object.分布式电源终端=objects.fbs;
+			          object.电缆型故障指示器=objects.dlx;
+			          object.未知故障指示器=objects.wz;
 			          paramvalues.push(object);
 			     });
 			     pwzdsltj(paramvalues);

@@ -47,12 +47,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
-        <!--orlace驱动-->
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
-        </dependency>
         <!--springioc容器模块-->
         <dependency>
             <groupId>org.springframework</groupId>

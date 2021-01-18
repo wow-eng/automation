@@ -3,6 +3,7 @@ package com.dao;
 import com.entity.DasTerminal;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (DasTerminal)表数据库访问层
@@ -63,5 +64,7 @@ public interface DasTerminalDao {
     int deleteById(String terminalId);
 
     int queryAllNum(DasTerminal dasTerminal);
+
+    List<Map> countStatistics();
 
 }

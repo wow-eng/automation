@@ -1,12 +1,15 @@
 package com.controller;
 
 import com.entity.DasTerminal;
+import com.entity.TerminalType;
 import com.service.DasTerminalService;
+import com.util.LayResult;
 import com.util.Result;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (DasTerminal)表控制层
@@ -60,7 +63,34 @@ public class DasTerminalController {
         }
          int num = this.dasTerminalService.queryAllNum(dasTerminal);
          List<DasTerminal> list = this.dasTerminalService.queryAll(dasTerminal,page,limit);
-        return Result.getStringObjectMap(num,list);
+        return LayResult.getStringObjectMap(num,list);
+    }
+
+    @RequestMapping("countStatistics")
+    public Object countStatistics(){
+        List<Map> list = this.dasTerminalService.countStatistics();
+        TerminalType terminalType = new TerminalType();
+        for( int i = 0; i < list.size(); i++ ) {
+            Map<String,Long> map = list.get(i);
+            if(("0").equals(map.get("terminal_type"))){
+                terminalType.setFtu(map.get("num"));
+            }else if(("1").equals(map.get("terminal_type"))){
+                terminalType.setDtu(map.get("num"));
+            }else if(("2").equals(map.get("terminal_type"))){
+                terminalType.setTtu(map.get("num"));
+            }else if(("3").equals(map.get("terminal_type"))){
+                terminalType.setRtu(map.get("num"));
+            }else if(("4").equals(map.get("terminal_type"))){
+                terminalType.setFbs(map.get("num"));
+            }else if(("5").equals(map.get("terminal_type"))){
+                terminalType.setGz(map.get("num"));
+            }else if(("6").equals(map.get("terminal_type"))){
+                terminalType.setDlx(map.get("num"));
+            }else if(("7").equals(map.get("terminal_type"))){
+                terminalType.setWz(map.get("num"));
+            }
+        }
+        return Result.success(terminalType);
     }
 
 }

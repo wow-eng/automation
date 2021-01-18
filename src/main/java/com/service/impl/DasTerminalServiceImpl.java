@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (DasTerminal)表服务实现类
@@ -88,4 +89,10 @@ public class DasTerminalServiceImpl implements DasTerminalService {
         PageHelper.startPage(pageNum,pageSize);
         return this.dasTerminalDao.queryAll(dasTerminal);
     }
+
+    @Override
+    public List<Map> countStatistics() {
+        return dasTerminalDao.countStatistics();
+    }
+
 }

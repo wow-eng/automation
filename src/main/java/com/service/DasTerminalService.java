@@ -2,6 +2,7 @@ package com.service;
 
 import com.entity.DasTerminal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (DasTerminal)表服务接口
@@ -55,5 +56,7 @@ public interface DasTerminalService {
     int queryAllNum(DasTerminal dasTerminal);
 
     List<DasTerminal> queryAll(DasTerminal dasTerminal,Integer page,Integer limit);
+
+    List<Map> countStatistics();
 
 }
