@@ -18,6 +18,14 @@
     <div class="layui-inline">
         <input class="layui-input" name="terminalType" id="terminalType" autocomplete="off">
     </div>
+    地市公司：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="orgId" autocomplete="off">
+    </div>
+    馈线线路ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="feederId" autocomplete="off">
+    </div>
     <button class="layui-btn" data-type="reload">搜索</button>
 </div>
 <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -67,15 +75,18 @@
             reload: function () {
                 var terminalName = $('#terminalName');
                 var terminalType = $('#terminalType');
+                var orgId = $('#orgId');
+                var feederId = $('#feederId');
                 table.reload('testReload', {
                     where: {
                         terminalName: terminalName.val(),
-                        terminalType: terminalType.val()
+                        terminalType: terminalType.val(),
+                        orgId: orgId.val(),
+                        feederId: feederId.val(),
                     }
                 });
             }
         };
-
         $('.demoTable .layui-btn').on('click', function () {
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';

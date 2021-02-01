@@ -1,7 +1,9 @@
-// 柱状图表，列多柱
+//配网终端数量统计
+function pwzdsltj(paramvalues){
+   // 柱状图表，列多柱
 var chartColumnar_column = {
     color:[
-        "#87cefa", "#e73f60","#f2b71d"
+        "#87cefa", "#e73f60","#e75f60","#CAF2C2","#f3b81d","#97E76F", "#C9C8E7","#AB4BE7"
     ],
     legend: {
         top: 10,
@@ -20,13 +22,8 @@ var chartColumnar_column = {
     },
     tooltip: {},
     dataset: {
-        dimensions: ['product', 'DTF', 'UTF', '故指'],
-        source: [
-            {product: '厂家1', 'DTF': 43.3, 'UTF': 85.8, '故指': 93.7},
-            {product: '厂家2', 'DTF': 83.1, 'UTF': 73.4, '故指': 55.1},
-            {product: '厂家3', 'DTF': 86.4, 'UTF': 65.2, '故指': 82.5},
-            {product: '厂家4', 'DTF': 72.4, 'UTF': 53.9, '故指': 39.1}
-        ]
+        dimensions: ['product', 'DTU', 'FTU','TTU','RTU', '分布式电源终端','故障指示器','电缆型故障指示器','未知故障指示器'],
+        source:paramvalues
     },
     textStyle: {
         color: "#fff"
@@ -56,20 +53,46 @@ var chartColumnar_column = {
     series: [
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
         },
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
         },
         {
             type: 'bar',
-            barWidth: '18%'
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
+        },
+        {
+            type: 'bar',
+            barWidth: '8%'
         }
     ]
 };
-
-//饼状图表，环形
+       var myChartColumnar_column1 = echarts.init(document.getElementById('chartColumnar_column1'));
+       myChartColumnar_column1.setOption(chartColumnar_column);
+}
+  
+ //遥信成功率
+ function yxcgl(paramvalues){
+    
+    //饼状图表，环形
 var chartCake_ringy1 = {
     grid: {
         containLabel: true,
@@ -101,15 +124,18 @@ var chartCake_ringy1 = {
                     color: "#fff",
                 }
             },
-            data: [
-                {value: 30, name: '未成功'},
-                {value: 70, name: '成功'}
-            ]
+            data:paramvalues
         }
     ]
 };
-
-var chartCake_ringy2 = {
+     var myChartCake_ringy1 = echarts.init(document.getElementById('chartCake_ringy1'));
+        myChartCake_ringy1.setOption(chartCake_ringy1);
+ }
+ 
+//遥控成功率
+function ykcgl(paramvalues){
+ 
+   var chartCake_ringy2 = {
     grid: {
         containLabel: true,
         width: 'auto',
@@ -140,14 +166,26 @@ var chartCake_ringy2 = {
                     color: "#fff",
                 }
             },
-            data: [
-                {value: 70, name: '未成功'},
-                {value: 30, name: '成功'}
-            ]
+            data:paramvalues
         }
     ]
 };
-//饼状图表
+
+var myChartCake_ringy1 = echarts.init(document.getElementById('chartCake_ringy2'));
+myChartCake_ringy1.setOption(chartCake_ringy2);
+}
+
+
+
+
+
+
+
+
+//介质
+function  tjchanTypeSl(paramvalues){
+  
+  //饼状图表
 var chartCake_circular = {
     color:[
         "#87cefa", "#e73f60","#f2b71d","#65c233"
@@ -171,12 +209,7 @@ var chartCake_circular = {
                     color: "#fff"
                 }
             },
-            data: [
-                {value: 10, name: '无线公网'},
-                {value: 20, name: '无线专网'},
-                {value: 30, name: '光仟'},
-                {value: 40, name: '载波'}
-            ],
+            data: paramvalues,
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
@@ -187,129 +220,111 @@ var chartCake_circular = {
         }
     ]
 };
+ //介质统计
+	var myChartCake_circular1 = echarts.init(document.getElementById('chartCake_circular1'));
+	myChartCake_circular1.setOption(chartCake_circular);
+}
+//终端平均在线率
+function zdpjzxl(paramvalues){
 
-//柱状图表，行多柱
-var chartColumnar_row = {
+ 
+//饼状图表
+var chartColumnar_column = {
     color:[
-        "#65c233", "#e73f60"
+        "#ff7f50","#87cefa","#65c233", "#e73f60",
     ],
-    grid: {
-        top: 30,
-        left: 10,
-        right: 10,
-        bottom: 20,
-        containLabel: true,
-        width: 'auto',
-        height: 'auto',
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'shadow'
-        }
-    },
-    legend: {
-        top: 10,
-        textStyle: {
-            color: "#fff"
-        }
-    },
-    toolbox: {
-        show: true
-    },
-    calculable: true,
-    xAxis: {
-        axisLabel: {
-            color: "#fff"
-        },
-        splitLine: {
-            show: true,
-            lineStyle: {
-                color: "#333",
-                type: 'solid'
-            }
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#fff"
-            }
-        }
-    },
-    yAxis: {
-        axisLabel: {
-            color: "#fff"
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#fff"
-            }
-        },
-        type: 'category'
-    },
-    dataset: {
-        dimensions: ['product', '在线', '离线'],
-        source: [
-            {product: '厂家1', '在线': 43.3, '离线': 85.8},
-            {product: '厂家2', '在线': 83.1, '离线': 73.4},
-            {product: '厂家3', '在线': 86.4, '离线': 65.2},
-            {product: '厂家4', '在线': 72.4, '离线': 53.9}
-        ]
-    },
-    series: [
-        {
-            itemStyle: {normal: {label: {show: true, position: 'insideRight'}}},
-            type: 'bar'
-        },
-        {
-            itemStyle: {normal: {label: {show: true, position: 'insideRight'}}},
-            type: 'bar'
-        }
-    ]
-};
-
-//饼状图表，南丁格尔
-var chartCake_nightingale = {
-    color:[
-       "#87cefa", "#e73f60","#ff7f50",
-    ],
-    grid: {
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        containLabel: true,
-        width: 'auto',
-        height: 'auto',
-    },
     tooltip: {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    calculable: true,
+    series: [
+        {
+            name: '终端平均在线率',
+            type: 'pie',
+            radius: '70%',
+            center: ['50%', '50%'],
+            label: {
+                color: "#fff",
+                formatter: "{b}\n{c}\%"
+            },
+            labelLine: {
+                lineStyle: {
+                    color: "#fff"
+                }
+            },
+            data: paramvalues,
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+ 
+      var myChartColumnar_column1 = echarts.init(document.getElementById('chartColumnar_row1'));
+      myChartColumnar_column1.setOption(chartColumnar_column);
+ 
+
+}
+//终端缺陷统计
+function zdqxtj(){
+ 
+ 
+ 
+//饼状图表
+var chartCake_nightingale = {
+    color:[
+        "#87cefa", "#e73f60","#ff7f50", "#e73f60",
+    ],
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
     series: [
         {
             name: '终端缺陷统计',
             type: 'pie',
-            radius: [30, 90],
+            radius: '70%',
             center: ['50%', '50%'],
-            roseType: 'area',
             label: {
                 color: "#fff",
-                formatter: "{b} \n{c} \%"
+                formatter: "{b}\n{c}\%"
             },
             labelLine: {
                 lineStyle: {
-                    color: "#fff",
+                    color: "#fff"
                 }
             },
-            data: [
+            data:[
                 {value: 10, name: 'DTU'},
-                {value: 5, name: 'FTU'},
-                {value: 15, name: '故指'}
-            ]
+                {value: 35, name: 'FTU'},
+                {value: 55, name: '故指'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
         }
     ]
-};
+}; 
+ 
+   
+
+//终端缺陷统计
+var myChartCake_nightingale1 = echarts.init(document.getElementById('chartCake_nightingale1'));
+myChartCake_nightingale1.setOption(chartCake_nightingale);
+
+
+}
+
+
+
 
 //地图,江西
 var map_jiangxi = {

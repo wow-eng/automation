@@ -35,6 +35,10 @@
         where terminal_id = #{terminalId}
     </select>
 
+    <select id="countStatistics" resultType="java.util.HashMap">
+        select terminal_type,count(terminal_type) as num from dwt_dms.das_terminal group by terminal_type
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="DasTerminalMap">
         select
@@ -64,10 +68,10 @@
                 and terminal_id = #{terminalId}
             </if>
             <if test="terminalType != null and terminalType != ''">
-                and terminal_type = #{terminalType}
+                and terminal_type like (concat('%',#{terminalType},'%'))
             </if>
             <if test="terminalName != null and terminalName != ''">
-                and terminal_name = #{terminalName}
+                and terminal_name like (concat('%',#{terminalName},'%'))
             </if>
             <if test="commFacId != null and commFacId != ''">
                 and comm_fac_id = #{commFacId}
@@ -79,7 +83,7 @@
                 and equip_type = #{equipType}
             </if>
             <if test="orgId != null and orgId != ''">
-                and org_id = #{orgId}
+                and org_id like (concat('%',#{orgId},'%'))
             </if>
             <if test="runDate != null">
                 and run_date = #{runDate}
@@ -91,7 +95,7 @@
                 and file_date = #{fileDate}
             </if>
             <if test="feederId != null and feederId != ''">
-                and feeder_id = #{feederId}
+                and feeder_id like (concat('%',#{feederId},'%'))
             </if>
             <if test="functionType != null and functionType != ''">
                 and function_type = #{functionType}
@@ -212,7 +216,7 @@
 
     <!--通过主键修改数据-->
     <update id="update">
-        update dwt_dms.das_terminal
+        update accounting.das_terminal
         <set>
             <if test="terminalType != null and terminalType != ''">
                 terminal_type = #{terminalType},

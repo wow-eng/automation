@@ -95,7 +95,7 @@
                 and file_date = #{fileDate}
             </if>
             <if test="feederId != null and feederId != ''">
-                and feeder_id like (concat('%',#{feeder_id},'%'))
+                and feeder_id like (concat('%',#{feederId},'%'))
             </if>
             <if test="functionType != null and functionType != ''">
                 and function_type = #{functionType}

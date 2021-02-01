@@ -9,9 +9,17 @@
     <link rel="stylesheet" href="layui/css/layui.css"  media="all">
 </head>
 <body>
-终端名称<input type="text" placeholder="请输入标题" name="title" style="width: 150px;height: 30px; margin:10px">
-终端类型<input type="text" placeholder="请输入标题" name="title" style="width: 150px;height: 30px; margin:10px">
-<button type="button" style="margin: 10px;width: 60px;height: 30px;">搜索</button>
+<div class="demoTable">
+    搜索终端名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalName" id="terminalName" autocomplete="off">
+    </div>
+   设备类型：
+    <div class="layui-inline">
+        <input class="layui-input" name="equipType" id="equipType" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="layui/js/jquery-3.4.1.js" charset="utf-8"></script>
@@ -29,12 +37,31 @@
                 ,{field:'equipType', width:200, title: '设备类型'}
                 ,{field:'chanType', width:200, title: '通讯介子'}
                 ,{field:'factoryName', title: '终端厂家', width: 200, minWidth: 200} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-            ]]
+            ]],
+            id: 'testReload'
             ,page: {
-                limit:25
+                limit:20
             }
         });
+        var $ = layui.$, active = {
+            reload: function () {
+                var terminalName = $('#terminalName');
+                var equipType = $('#equipType');
+
+                table.reload('testReload', {
+                    where: {
+                        terminalName: terminalName.val(),
+                        equipType: equipType.val()
+                    }
+                });
+            }
+        };
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
     });
+
 </script>
 
 </body>

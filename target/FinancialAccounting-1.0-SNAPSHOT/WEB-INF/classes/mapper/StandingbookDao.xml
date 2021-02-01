@@ -13,20 +13,20 @@
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="StandingbookMap">
-       select a.terminal_id,a.terminal_name,b.chan_name,a.equip_type,b.chan_type,a.factory_name from dwt_dms.das_terminal as a,accounting.das_channel_info as b
+       select a.terminal_id,a.terminal_name,b.chan_name,a.equip_type,b.chan_type,a.factory_name from dwt_dms.das_terminal as a,dwt_dms.das_channel_info as b
         <where>
-
+            a.terminal_id=b.terminal_id
             <if test="terminalId != null and terminalId != ''">
             and terminal_id = #{terminalId}
             </if>
             <if test="terminalName != null and terminalName != ''">
-                and terminal_name = #{terminalName}
+                and terminal_name like concat('%',#{terminalName},'%')
             </if>
             <if test="chanName != null and chanName != ''">
                 and chan_name = #{chanName}
             </if>
             <if test="equipType != null and equipType != ''">
-                and equip_type = #{equipType}
+                and equip_type like concat('%',#{equipType},'%')
             </if>
             <if test="chanType != null and chanType != ''">
                 and chan_type = #{chanType}
@@ -34,14 +34,14 @@
             <if test="factoryName != null and factoryName != ''">
                 and factory_name = #{factoryName}
             </if>
-            a.terminal_id=b.terminal_id
+
         </where>
 
     </select>
     <select id="queryAllNum" resultType="java.lang.Integer">
     select count(*) from dwt_dms.das_terminal as a,dwt_dms.das_channel_info as b
         <where>
-
+            a.terminal_id=b.terminal_id
             <if test="terminalId != null and terminalId != ''">
                 and terminal_id = #{terminalId}
             </if>
@@ -60,7 +60,7 @@
             <if test="factoryName != null and factoryName != ''">
                 and factory_name = #{factoryName}
             </if>
-            a.terminal_id=b.terminal_id
+
         </where>
 
     </select>
