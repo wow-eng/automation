@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -7,10 +9,10 @@ import java.io.Serializable;
  * (DasChannelInfo)实体类
  *
  * @author makejava
- * @since 2021-02-01 19:53:00
+ * @since 2021-02-01 19:59:46
  */
 public class DasChannelInfo implements Serializable {
-    private static final long serialVersionUID = 142404873684868070L;
+    private static final long serialVersionUID = 256924335179491078L;
     
     private String chanId;
     
@@ -27,9 +29,9 @@ public class DasChannelInfo implements Serializable {
     private String netDescription;
     
     private String orgId;
-    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate;
-    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date fileDate;
     
     private String delflag;

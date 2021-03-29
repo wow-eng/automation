@@ -7,7 +7,7 @@ import java.util.List;
  * (DasChannelInfo)表服务接口
  *
  * @author makejava
- * @since 2021-02-01 19:53:02
+ * @since 2021-02-01 19:59:47
  */
 public interface DasChannelInfoService {
 
@@ -52,4 +52,7 @@ public interface DasChannelInfoService {
      */
     boolean deleteById(String terminalId);
 
+    List<DasChannelInfo>queryAll(DasChannelInfo dasChannelInfo,Integer page,Integer limit);
+
+    int queryAllNum(DasChannelInfo dasChannelInfo);
 }

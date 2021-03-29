@@ -33,6 +33,12 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree " lay-shrink="all" lay-filter="test">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">主站设备管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">数据采集服务器</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">配电自动化设备管理</a>
                     <dl class="layui-nav-child">
@@ -40,13 +46,36 @@
                         <dd><a href="standingBook.html">台账</a></dd>
                     </dl>
                 </li>
-              <!--  <li class="layui-nav-item">
-                    <a href="javascript:;">发票管理</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">通讯通道信息管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="admin_depart.jsp">已开发票</a></dd>
-                        <dd><a href="admin_depart_add.jsp;">未开发票</a></dd>
+                        <dd><a href="communication.html">通讯通道信息</a></dd>
                     </dl>
-                </li>-->
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">软件版本管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">维护最新配电终端设备的软件版本</a></dd>
+                        <dd><a href="">核对软件版本号</a></dd>
+                        <dd><a href="">不一致情况进行预警及通知</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">运行管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">终端运行状态</a></dd>
+                        <dd><a href="">开关运行状态</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">终端检验管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">终端缺陷管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">终端状态检修管理</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -66,7 +95,6 @@
 
     layui.use('element', function(){
         var element = layui.element;
-
     });
     $(document).ready(function(){
         $("dd>a").click(function (e) {
@@ -74,7 +102,6 @@
             $("#iframeMain").attr("src",$(this).attr("href"));
         });
     });
-	
 </script>
 </body>
 </html>

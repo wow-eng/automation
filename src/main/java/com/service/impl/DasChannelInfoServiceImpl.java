@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.entity.DasChannelInfo;
 import com.dao.DasChannelInfoDao;
+import com.github.pagehelper.PageHelper;
 import com.service.DasChannelInfoService;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * (DasChannelInfo)表服务实现类
  *
  * @author makejava
- * @since 2021-02-01 19:53:02
+ * @since 2021-02-01 19:59:48
  */
 @Service("dasChannelInfoService")
 public class DasChannelInfoServiceImpl implements DasChannelInfoService {
@@ -75,5 +76,16 @@ public class DasChannelInfoServiceImpl implements DasChannelInfoService {
     @Override
     public boolean deleteById(String terminalId) {
         return this.dasChannelInfoDao.deleteById(terminalId) > 0;
+    }
+
+    @Override
+    public List<DasChannelInfo> queryAll(DasChannelInfo dasChannelInfo,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return this.dasChannelInfoDao.queryAll(dasChannelInfo);
+    }
+
+    @Override
+    public int queryAllNum(DasChannelInfo dasChannelInfo) {
+        return this.dasChannelInfoDao.queryAllNum(dasChannelInfo);
     }
 }

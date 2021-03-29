@@ -216,7 +216,7 @@
 
     <!--通过主键修改数据-->
     <update id="update">
-        update accounting.das_terminal
+        update dwt_dms.das_terminal
         <set>
             <if test="terminalType != null and terminalType != ''">
                 terminal_type = #{terminalType},
@@ -253,11 +253,6 @@
             </if>
             <if test="objId != null and objId != ''">
                 obj_id = #{objId},
-            </if>
-            <if test="pmsId != null and pmsId != ''">
-                pms_id = #{pmsId},
-            </if>
-            <if test="delflag != null and delflag != ''">
                 delflag = #{delflag},
             </if>
             <if test="deldate != null">

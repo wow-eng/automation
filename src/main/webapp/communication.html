@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通信</title>
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+</head>
+<body>
+<div class="demoTable">
+    通道id:
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalName" id="chanId" autocomplete="off">
+    </div>
+    通讯厂站id:
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="commFacId" autocomplete="off">
+    </div>
+    终端id:
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="terminalId" autocomplete="off">
+    </div>
+    地市公司:
+    <div class="layui-inline">
+        <input class="layui-input" name="terminalType" id="orgId" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="layui/js/jquery-3.4.1.js" charset="utf-8"></script>
+<script type="text/html" id="toolbarDemo"></script>
+<script>
+layui.use(['table'], function(){
+var table = layui.table;
+table.render({
+elem: '#test'
+,url:'dasChannelInfo/queryAll'
+,width:'200%'
+,totaRow:true
+,cols: [[
+{field:'chanId', width:80, title: '通道id', width:100, fixed: 'left', unresize: true, sort: true}
+,{field:'commFacId', width:130, title: '通讯厂站id',sort: true}
+,{field:'terminalId', width:100, title: '终端id'}
+,{field:'chanNo', width:130, title: '通道编号'}
+,{field:'chanName', width:130, title: '通道名称'}
+,{field:'chanType', title: '介质类型', width: 90, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+,{field:'netDescription', title: '网络IP', width: 90}
+,{field:'orgId', title: '地市公司', width:120}
+,{field:'updateDate', title: '数据更新时间', width: 150}
+,{field:'fileDate', width:80, title: '无'}
+,{field:'delflag', width:137, title: '0正常1 删除'}
+]],
+id: 'testReload'
+,page: {
+limit:25
+}
+});
+    var $ = layui.$, active = {
+        reload: function () {
+            var chanId = $('#chanId');
+            var commFacId = $('#commFacId');
+            var terminalId = $('#terminalId');
+            var orgId = $('#orgId');
+            table.reload('testReload', {
+                where: {
+                    chanId: chanId.val(),
+                    commFacId: commFacId.val(),
+                    terminalId: terminalId.val(),
+                    orgId: orgId.val(),
+                }
+            });
+        }
+    };
+    $('.demoTable .layui-btn').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+});
+</script>
+</body>
+</html>

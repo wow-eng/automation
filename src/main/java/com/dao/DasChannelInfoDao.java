@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.DasChannelInfo;
+import com.entity.Standingbook;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * (DasChannelInfo)表数据库访问层
  *
  * @author makejava
- * @since 2021-02-01 19:53:01
+ * @since 2021-02-01 19:59:47
  */
 public interface DasChannelInfoDao {
 
@@ -61,5 +62,7 @@ public interface DasChannelInfoDao {
      * @return 影响行数
      */
     int deleteById(String terminalId);
+
+    int queryAllNum(DasChannelInfo dasChannelInfo);
 
 }
