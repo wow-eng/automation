@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset = "utf-8">
+        <title>配电自动化综合管理平台</title>
+        <link rel="stylesheet" href = "layuiadmin/dataV/style/base.css" />
+        <link rel="stylesheet" href =  layuiadmin/dataV/style/public.css" />
+        <link rel="stylesheet" href = "layuiadmin/dataV/style/home.css" />
+        <script type = "text/javascript" src = "layuiadmin/dataV/js/Libs/jquery.min.js"></script>
+        <script type = "text/javascript" src = "layuiadmin/dataV/js/Libs/echarts.min.js"></script>
+        <script type = "text/javascript" src = "layuiadmin/dataV/js/Chart/chartHome.js"></script>
+        <script type = "text/javascript" src = "layuiadmin/dataV/js/fullScreen.js"></script>
+
+        </head>
+        <body>
+        <div class = "row" id = "row1">
+        <div class = "col col-2-left">&nbsp;</div>
+        <div class = "col col-2-right">
+        <span class = "menu" id = "openMenu" ><a href="admin.html"><label>菜单</label></a></span>
+        <span class = "user" id="userMenu">
+        <span><!-- &nbsp; --></span>
+        <dl>
+        <dt><cite>欢迎:${userinfo.realname}</cite></dt>
+        <!-- <dd>配电设备终端运行科</dd> -->
+        </dl>
+        <ul>
+        <li><a>修改密码</a></li>
+        <li><a>个人信息</a></li>
+        </ul>
+        </span>
+        <span class = "fullScreen" id="fullScreen" title="全屏显示"><!-- 全屏显示 --></span>
+        <span class="exitScreen" id="exitScreen" title="退出全屏显示"><!-- 退出全屏 --></span>
+        <span class = "exit" title="退出系统"><!-- 退出 --></span>
+        </div>
+        </div>
+        <div class = "row" id = "row2">
+        <div class = "col col-3-left" id = "col21">
+        <div class = "box" id = "box211">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>配网终端数量统计</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartColumnar_column1">
+        </div>
+        </div>
+        </div>
+        <div class = "box" id = "box212">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>遥信成功率</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartCake_ringy1">
+        </div>
+        </div>
+        </div>
+        <div class = "box" id = "box213">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>遥控成功率</h3>
+        <span><!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartCake_ringy2">
+        在此放介质统计图表。
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class = "col col-3-center" id = "col22">
+        <div class = "box" id = "box221">
+        <div id = "map_jiangxi1" style = "width: 100%;height: 100%"></div>
+        </div>
+        <div class = "box" id = "box222">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>质量管理统计</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG">
+        <table>
+        <thead>
+        <tr class = "th1">
+        <th>&nbsp;</th>
+        <th colspan = "3">DTU</th>
+        <th colspan = "3">FTU</th>
+        <th colspan = "3">故指</th>
+        </tr>
+        <tr>
+        <th>&nbsp;</th>
+        <th>总数</th>
+        <th>合格数</th>
+        <th>合格率%</th>
+        <th>总数</th>
+        <th>合格数</th>
+        <th>合格率%</th>
+        <th>总数</th>
+        <th>合格数</th>
+        <th>合格率%</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class = "col col-3-right" id = "col23">
+        <div class = "box" id = "box231">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>终端平均在线率</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartColumnar_row1">
+        在此放各厂家终端运行统计图表。
+        </div>
+        </div>
+        </div>
+        <div class = "box" id = "box232">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>终端缺陷统计</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartCake_nightingale1">
+        在此放终端缺陷统计图表。
+        </div>
+        </div>
+        </div>
+        <div class = "box" id = "box233">
+        <div class = "boxHeader">
+        <div class = "boxBG">
+        <h3>介质统计</h3>
+        <span>
+        <!-- 更多 --></span>
+        </div>
+        </div>
+        <div class = "boxBody">
+        <div class = "boxBG" id = "chartCake_circular1">
+        在此放介质统计图表。
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </body>
+        <script type = "text/javascript" src = "layuiadmin/dataV/js/Chart/mapJiangxi.js"></script>
+        <script type = "text/javascript">
+        $(document).ready(function () {
+	        $("#fullScreen").click(function () {
+	        $("#fullScreen").hide();
+	        $("#exitScreen").show();
+	        fullScreen();
+	        });
+	        $("#exitScreen").click(function () {
+	        $("#fullScreen").show();
+	        $("#exitScreen").hide();
+	        exitScreen();
+	        });
+         // 配网终端数量统计
+         $.ajax({
+			url:'dasTerminal/countStatistics',
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     var paramvalues=[];
+			     $.each(objects,function(i,obj){
+			          var object = new Object();
+			           // if(obj.product.length>4){
+				       //     object.product = obj.product.substring(0,4);
+				       // }else{
+				       //     object.product= obj.product;
+				       // }
+			          object.DTU=objects.dtu;
+			          object.FTU =objects.ftu;
+			          object.故障指示器=objects.gz;
+			          object.RTU=objects.rtu;
+			          object.TTU=objects.ttu;
+			          object.分布式电源终端=objects.fbs;
+			          object.电缆型故障指示器=objects.dlx;
+			          object.未知故障指示器=objects.wz;
+			          paramvalues.push(object);
+			     });
+			     pwzdsltj(paramvalues);
+			},error: function(){
+				  //  layer.alert("网络连接有误，请稍后！");		
+			}
+	 }); 
+     //介质统计
+     $.ajax({
+			url:'${pageContext.request.contextPath}/rtuparam/tjchanTypeSl.do',			
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     var paramvalues=[];
+			     $.each(objects,function(i,obj){
+			          var object = new Object();
+			          object.name=obj.key;
+			          object.value =obj.value;
+			          paramvalues.push(object);
+			     });
+			     tjchanTypeSl(paramvalues);
+			},error: function(){
+				  //  layer.alert("网络连接有误，请稍后！");		
+			}
+	 }); 
+   
+     //遥信成功率
+     $.ajax({
+			url:'${pageContext.request.contextPath}/theme/yxdzzql.do',			
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     var paramvalues=[];
+			     $.each(objects,function(i,obj){
+			          var object = new Object();
+			          object.name=obj.key;
+			          object.value =obj.value;
+			          paramvalues.push(object);
+			     });
+			     yxcgl(paramvalues);
+			},error: function(){
+				  //  layer.alert("网络连接有误，请稍后！");		
+			}
+	 }); 
+	 
+	 //遥控成功率
+     $.ajax({
+			url:'${pageContext.request.contextPath}/theme/ykcgl.do',			
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     var paramvalues=[];
+			     $.each(objects,function(i,obj){
+			          var object = new Object();
+			          object.name=obj.key;
+			          object.value =obj.value;
+			          paramvalues.push(object);
+			     });
+			     ykcgl(paramvalues);
+			},error: function(){
+				  //  layer.alert("网络连接有误，请稍后！");		
+			}
+	 }); 
+     //终端平均在线率 zdpjzxl
+      $.ajax({
+			url:'${pageContext.request.contextPath}/theme/pjzxl.do',			
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     var paramvalues=[];
+			     $.each(objects,function(i,obj){
+			          var object = new Object();
+			          object.key =obj.key;
+			          object.value =obj.value;
+			          paramvalues.push(object);
+			     });
+			     zdpjzxl(paramvalues);
+			},error: function(){
+				  //  layer.alert("网络连接有误，请稍后！");		
+			}
+	   }); 
+      
+       //二次检测数据统计
+      $.ajax({
+			url:'${pageContext.request.contextPath}/report/zlgltj.do',			
+			method:'get',
+			cache: false,
+			dataType: 'json',
+			success: function(data){
+			     var objects = data.data;
+			     $.each(objects,function(i,obj){
+			          var html="<tr><td>"+obj.year+"</td>";
+			          var deviceobjs = obj.devices;
+			          for(var i=0;i<deviceobjs.length;i++){
+			                var o =deviceobjs[i];
+			                html+="<td>"+o.total+"</td><td>"+o.hgs+"</td><td>"+o.hgl+"</td>";
+			          } 
+			            html+="</tr>";
+			          $("#tbody").append(html);
+			     });
+			    
+			},error: function(){
+				  //layer.alert("网络连接有误，请稍后！");		
+			}
+	 }); 
+      
+        //zdqxtj();
+        //江西地图
+        var myMap_jiangxi1 = echarts.init(document.getElementById('map_jiangxi1'));
+
+        myMap_jiangxi1.setOption(map_jiangxi);
+
+        });
+        </script>
+        </html>

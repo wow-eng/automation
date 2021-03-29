@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DasChannelInfoDao">
+
+    <resultMap type="com.entity.DasChannelInfo" id="DasChannelInfoMap">
+        <result property="chanId" column="chan_id" jdbcType="VARCHAR"/>
+        <result property="commFacId" column="comm_fac_id" jdbcType="VARCHAR"/>
+        <result property="terminalId" column="terminal_id" jdbcType="VARCHAR"/>
+        <result property="chanNo" column="chan_no" jdbcType="VARCHAR"/>
+        <result property="chanName" column="chan_name" jdbcType="VARCHAR"/>
+        <result property="chanType" column="chan_type" jdbcType="VARCHAR"/>
+        <result property="netDescription" column="net_description" jdbcType="VARCHAR"/>
+        <result property="orgId" column="org_id" jdbcType="VARCHAR"/>
+        <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+        <result property="fileDate" column="file_date" jdbcType="TIMESTAMP"/>
+        <result property="delflag" column="delflag" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="DasChannelInfoMap">
+        select
+          chan_id, comm_fac_id, terminal_id, chan_no, chan_name, chan_type, net_description, org_id, update_date, file_date, delflag
+        from dwt_dms.das_channel_info
+        where terminal_id = #{terminalId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="DasChannelInfoMap">
+        select
+          chan_id, comm_fac_id, terminal_id, chan_no, chan_name, chan_type, net_description, org_id, update_date, file_date, delflag
+        from dwt_dms.das_channel_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="DasChannelInfoMap">
+        select
+        case  delflag
+        when '0' then '正常'
+        when '1' then '删除'
+        end as delflag,
+        case  chan_type
+        when '0' then '无线公网'
+        when '1' then '无线专网'
+        when '2' then '光纤'
+        when '3' then '载波'
+        end as chan_type,
+          chan_id, comm_fac_id, terminal_id, chan_no, chan_name, net_description, org_id, update_date, file_date
+        from dwt_dms.das_channel_info
+        <where>
+            <if test="chanId != null and chanId != ''">
+                and chan_id like (concat('%',#{chanId},'%'))
+            </if>
+            <if test="commFacId != null and commFacId != ''">
+                and comm_fac_id like (concat('%',#{commFacId},'%'))
+            </if>
+            <if test="terminalId != null and terminalId != ''">
+                and terminal_id like (concat('%',#{terminalId},'%'))
+            </if>
+            <if test="chanNo != null and chanNo != ''">
+                and chan_no = #{chanNo}
+            </if>
+            <if test="chanName != null and chanName != ''">
+                and chan_name = #{chanName}
+            </if>
+            <if test="chanType != null and chanType != ''">
+                and chan_type = #{chanType}
+            </if>
+            <if test="netDescription != null and netDescription != ''">
+                and net_description = #{netDescription}
+            </if>
+            <if test="orgId != null and orgId != ''">
+                and org_id like (concat('%',#{orgId},'%'))
+            </if>
+            <if test="updateDate != null">
+                and update_date = #{updateDate}
+            </if>
+            <if test="fileDate != null">
+                and file_date = #{fileDate}
+            </if>
+            <if test="delflag != null and delflag != ''">
+                and delflag = #{delflag}
+            </if>
+        </where>
+    </select>
+    <select id="queryAllNum" resultType="java.lang.Integer">
+       select count(*) from dwt_dms.das_channel_info
+        <where>
+            <if test="chanId != null and chanId != ''">
+                and chan_id = #{chanId}
+            </if>
+            <if test="commFacId != null and commFacId != ''">
+                and comm_fac_id = #{commFacId}
+            </if>
+            <if test="terminalId != null and terminalId != ''">
+                and terminal_id = #{terminalId}
+            </if>
+            <if test="chanNo != null and chanNo != ''">
+                and chan_no = #{chanNo}
+            </if>
+            <if test="chanName != null and chanName != ''">
+                and chan_name = #{chanName}
+            </if>
+            <if test="chanType != null and chanType != ''">
+                and chan_type = #{chanType}
+            </if>
+            <if test="netDescription != null and netDescription != ''">
+                and net_description = #{netDescription}
+            </if>
+            <if test="orgId != null and orgId != ''">
+                and org_id = #{orgId}
+            </if>
+            <if test="updateDate != null">
+                and update_date = #{updateDate}
+            </if>
+            <if test="fileDate != null">
+                and file_date = #{fileDate}
+            </if>
+            <if test="delflag != null and delflag != ''">
+                and delflag = #{delflag}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="terminalId" useGeneratedKeys="true">
+        insert into dwt_dms.das_channel_info(chan_id, comm_fac_id, chan_no, chan_name, chan_type, net_description, org_id, update_date, file_date, delflag)
+        values (#{chanId}, #{commFacId}, #{chanNo}, #{chanName}, #{chanType}, #{netDescription}, #{orgId}, #{updateDate}, #{fileDate}, #{delflag})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update dwt_dms.das_channel_info
+        <set>
+            <if test="chanId != null and chanId != ''">
+                chan_id = #{chanId},
+            </if>
+            <if test="commFacId != null and commFacId != ''">
+                comm_fac_id = #{commFacId},
+            </if>
+            <if test="chanNo != null and chanNo != ''">
+                chan_no = #{chanNo},
+            </if>
+            <if test="chanName != null and chanName != ''">
+                chan_name = #{chanName},
+            </if>
+            <if test="chanType != null and chanType != ''">
+                chan_type = #{chanType},
+            </if>
+            <if test="netDescription != null and netDescription != ''">
+                net_description = #{netDescription},
+            </if>
+            <if test="orgId != null and orgId != ''">
+                org_id = #{orgId},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate},
+            </if>
+            <if test="fileDate != null">
+                file_date = #{fileDate},
+            </if>
+            <if test="delflag != null and delflag != ''">
+                delflag = #{delflag},
+            </if>
+        </set>
+        where terminal_id = #{terminalId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from dwt_dms.das_channel_info where terminal_id = #{terminalId}
+    </delete>
+
+</mapper>
